@@ -23,7 +23,7 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-        $token =  $user->createToken('Subletor')->accessToken;
+        $token =  $user->createToken('theatre')->accessToken;
 
         return response()->json([
             'authentication' => [
