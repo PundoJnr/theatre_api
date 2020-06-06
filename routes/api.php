@@ -10,4 +10,7 @@ Route::post('register', 'Api\Auth\RegisterController@register');
 
 Route::group(['middleware' => 'auth:api'], function() {
     Route::post('logout', 'Api\Auth\LoginController@logout');
+
+    // Interests
+    Route::post('interests', 'Api\InterestsController@index');
 });
