@@ -13,4 +13,6 @@ Route::group(['middleware' => 'auth:api'], function() {
 
     // Interests
     Route::post('interests', 'Api\InterestsController@index');
+
+    
 });
