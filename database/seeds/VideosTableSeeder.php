@@ -28,7 +28,7 @@ class VideosTableSeeder extends Seeder
                 'stage_manager'=>$faker->name,
                 'crew'=>$faker->sentence,
                 'cast'=>$faker->sentence,
-                'media_link'=>$faker->url,
+                'media_link'=>$faker->imageUrl,
                 'tags'=>$faker->sentence,
             ]);
         }
