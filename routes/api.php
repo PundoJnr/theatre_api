@@ -13,6 +13,8 @@ Route::group(['middleware' => 'auth:api'], function() {
 
     // Interests
     Route::post('interests', 'Api\InterestsController@index');
+    //videos
+    Route::get('videos','Api\VideoController@index');
 
     
 });
