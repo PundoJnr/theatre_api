@@ -15,5 +15,6 @@ Route::group(['middleware' => 'auth:api'], function () {
 });
 
   //videos
-  Route::get('videos', 'Api\VideosController@index');
-  Route::get('videos/{video}', 'Api\VideosController@show');
+//   Route::get('videos', 'Api\VideosController@index');
+//   Route::get('videos/{video}', 'Api\VideosController@show');
+  Route::apiResource('/videos', 'Api\VideosController'); //->except('index')
