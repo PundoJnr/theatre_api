@@ -89,8 +89,14 @@ class VideosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Videos $video)
     {
-       
+        // $this->authorize("delete", $video);
+ 
+        $video->delete();
+ 
+        return response()->json([
+        'message' => "Your video has been deleted."
+        ]);
     }
 }
