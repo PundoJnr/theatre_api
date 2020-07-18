@@ -71,9 +71,16 @@ class VideosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Videos $video)
     {
-        //
+        // $this->authorize("update", $video);
+ 
+        $video->update($request->only('type', 'title'));
+ 
+        return response()->json([
+        'message' => "Your video has been updated.",
+        'title' => $video->title
+        ]);
     }
 
     /**
@@ -84,6 +91,6 @@ class VideosController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
     }
 }
