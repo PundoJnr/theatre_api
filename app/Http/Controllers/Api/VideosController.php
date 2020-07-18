@@ -29,10 +29,11 @@ class VideosController extends Controller
      */
     public function store(Request $request)
     {
-        $video =  $request->user()->videos()->create($request());
+        $video =  $request->user()->videos()->create($request->only('type', 'title'));
 
         return response()->json([
-            'message' => 'Your question has been submitted'
+            'message' => 'Your question has been submitted',
+            'video' => new VideoResource($video)
         ]);
     }
 
