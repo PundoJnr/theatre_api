@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Videos;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\VideosResource;
 
 class VideosController extends Controller
 {
@@ -15,7 +16,9 @@ class VideosController extends Controller
      */
     public function index()
     {
-        return Videos :: all();
+        $vidoes = Videos::all();
+
+        return VideosResource::collection($vidoes);
     }
 
     /**
@@ -26,7 +29,7 @@ class VideosController extends Controller
      */
     public function store(Request $request)
     {
-       $video =  $request->user()->videos()->create($request());
+        $video =  $request->user()->videos()->create($request());
 
         return response()->json([
             'message' => 'Your question has been submitted'
