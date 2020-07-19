@@ -9,6 +9,10 @@ use App\Http\Resources\VideosResource;
 
 class VideosController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except('index');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -19,6 +23,21 @@ class VideosController extends Controller
         $vidoes = Videos::all();
 
         return VideosResource::collection($vidoes);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        $interest =  $request->user()->videis()->create($request->only('type', 'title'));
+
+        return response()->json([
+            'message' => 'Your video has been submitted',
+            'video' => new VideoResource($video)
+        ]);
     }
 
     /**
