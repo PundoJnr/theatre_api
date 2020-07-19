@@ -30,3 +30,7 @@ Route::post('/token', 'Auth\LoginController@getToken');
 
 // Interests
  Route::get('interests', 'Api\InterestsController@index');
+
+//  Route::middleware(['auth:api'])->group(function () {
+     Route::apiResource('/interests', 'Api\InterestsController')->except('index');
+//  });
