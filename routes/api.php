@@ -27,3 +27,6 @@ Route::post('/token', 'Auth\LoginController@getToken');
 //   Route::middleware(['auth:api'])->group(function () {
 //       Route::apiResource('/videos', 'Api\VideosController')->except('index');
 //   });
+
+// Interests
+ Route::get('interests', 'Api\InterestsController@index');
