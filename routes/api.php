@@ -14,7 +14,23 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('interests', 'Api\InterestsController@index');
 });
 
+// passport token
+Route::post('/token', 'Auth\LoginController@getToken');
+
   //videos
-//   Route::get('videos', 'Api\VideosController@index');
+  Route::get('videos', 'Api\VideosController@index');
 //   Route::get('videos/{video}', 'Api\VideosController@show');
-  Route::apiResource('/videos', 'Api\VideosController'); //->except('index')
+// Route::middleware(['auth:api'])->group(function () {
+    Route::apiResource('/videos', 'Api\VideosController')->except('index');
+// });
+
+//   Route::middleware(['auth:api'])->group(function () {
+//       Route::apiResource('/videos', 'Api\VideosController')->except('index');
+//   });
+
+// Interests
+ Route::get('interests', 'Api\InterestsController@index');
+
+//  Route::middleware(['auth:api'])->group(function () {
+     Route::apiResource('/interests', 'Api\InterestsController')->except('index');
+//  });

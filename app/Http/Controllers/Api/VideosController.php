@@ -5,9 +5,14 @@ namespace App\Http\Controllers\Api;
 use App\Videos;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\VideosResource;
 
 class VideosController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except('index');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,24 @@ class VideosController extends Controller
      */
     public function index()
     {
-        return Videos :: all();
+        $vidoes = Videos::all();
+
+        return VideosResource::collection($vidoes);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        $interest =  $request->user()->videis()->create($request->only('type', 'title'));
+
+        return response()->json([
+            'message' => 'Your video has been submitted',
+            'video' => new VideoResource($video)
+        ]);
     }
 
     /**
@@ -26,7 +48,12 @@ class VideosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $video =  $request->user()->videos()->create($request->only('type', 'title'));
+
+        return response()->json([
+            'message' => 'Your question has been submitted',
+            'video' => new VideoResource($video)
+        ]);
     }
 
     /**
@@ -63,9 +90,16 @@ class VideosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Videos $video)
     {
-        //
+        // $this->authorize("update", $video);
+ 
+        $video->update($request->only('type', 'title'));
+ 
+        return response()->json([
+        'message' => "Your video has been updated.",
+        'title' => $video->title
+        ]);
     }
 
     /**
@@ -74,8 +108,14 @@ class VideosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Videos $video)
     {
-        //
+        // $this->authorize("delete", $video);
+ 
+        $video->delete();
+ 
+        return response()->json([
+        'message' => "Your video has been deleted."
+        ]);
     }
 }
