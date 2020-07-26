@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Videos;
+use Illuminate\Database\Seeder;
+
 class VideosTableSeeder extends Seeder
 {
     /**
@@ -11,12 +12,11 @@ class VideosTableSeeder extends Seeder
      */
     public function run()
     {
-
         Videos::truncate();
         $faker = \Faker\Factory::create();
 
 
-        for ($i =0; $i < 100 ; $i++){
+        for ($i =0; $i < 100 ; $i++) {
             Videos::create([
                 'type'=>$faker->fileExtension,
                 'title'=>$faker->title,
@@ -30,8 +30,10 @@ class VideosTableSeeder extends Seeder
                 'cast'=>$faker->sentence,
                 'media_link'=>$faker->imageUrl,
                 'tags'=>$faker->sentence,
+                'genre'=>$faker->word,
+                'category'=>$faker->word,
+                'price'=>$faker->numberBetween(500, 100),
             ]);
         }
-        
     }
 }

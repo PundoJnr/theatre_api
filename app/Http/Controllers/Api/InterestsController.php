@@ -49,10 +49,10 @@ class InterestsController extends Controller
      */
     public function store(Request $request, Interest $interest)
     {
-        $interest =  $request->user()->interests()->create($request->only('type', 'title'));
+        $interest =   $interest->create($request->only('title', 'description', 'user_id'));
 
         return response()->json([
-            'message' => 'Your question has been submitted',
+            'message' => 'Your interest has been submitted',
             'interest' => new InterestsResource($interest)
         ]);
     }

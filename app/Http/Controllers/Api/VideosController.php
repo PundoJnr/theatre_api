@@ -32,11 +32,11 @@ class VideosController extends Controller
      */
     public function create(Request $request)
     {
-        $interest =  $request->user()->videis()->create($request->only('type', 'title'));
+        $interest =  $request->user()->videos()->create($request->only('type', 'title'));
 
         return response()->json([
             'message' => 'Your video has been submitted',
-            'video' => new VideoResource($video)
+            'video' => new VideosResource($video)
         ]);
     }
 
@@ -46,13 +46,13 @@ class VideosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Videos $video)
     {
-        $video =  $request->user()->videos()->create($request->only('type', 'title'));
+        $videos = $video->create($request->only(['type', 'title', 'location', 'language', 'synopsis', 'director', 'playwright', 'stage_manager', 'crew', 'cast', 'media_link', 'tags', 'genre', 'category', 'price']));
 
         return response()->json([
-            'message' => 'Your question has been submitted',
-            'video' => new VideoResource($video)
+            'message' => 'Your video has been submitted',
+            'video' => new VideosResource($videos)
         ]);
     }
 
