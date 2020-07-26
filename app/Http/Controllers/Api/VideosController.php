@@ -48,10 +48,10 @@ class VideosController extends Controller
      */
     public function store(Request $request, Videos $video)
     {
-        $videos = Videos::create($request->only(['type', 'title', 'location', 'language', 'synopsis', 'director', 'playwright', 'stage_manager', 'crew', 'cast', 'media_link', 'tags', 'genre', 'category', 'price']));
+        $videos = $video->create($request->only(['type', 'title', 'location', 'language', 'synopsis', 'director', 'playwright', 'stage_manager', 'crew', 'cast', 'media_link', 'tags', 'genre', 'category', 'price']));
 
         return response()->json([
-            'message' => 'Your question has been submitted',
+            'message' => 'Your video has been submitted',
             'video' => new VideosResource($videos)
         ]);
     }
