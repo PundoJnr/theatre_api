@@ -30,6 +30,9 @@ class VideosResource extends JsonResource
             'tags' => $this->tags,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'genre' => $this->genre,
+            'category' => $this->category,
+            'price' => $this->price,
             // 'user' => new UserResource($this->user)
         ];
     }
