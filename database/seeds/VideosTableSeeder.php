@@ -12,7 +12,7 @@ class VideosTableSeeder extends Seeder
      */
     public function run()
     {
-        Videos::truncate();
+        // Videos::truncate();
         $faker = \Faker\Factory::create();
 
 

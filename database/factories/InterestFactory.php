@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Interest::class, function (Faker $faker) {
     return [
-        'title' => rtrim($faker->sentence(rand(5, 10)), "."),
+        'name' => rtrim($faker->word(rand(2, 5)), "."),
         'description' => $faker->paragraphs(rand(3, 7), true)
     ];
 });

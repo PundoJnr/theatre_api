@@ -20,7 +20,7 @@ class VideosController extends Controller
      */
     public function index()
     {
-        $vidoes = Videos::all();
+        $vidoes = Videos::latest()->get();
 
         return VideosResource::collection($vidoes);
     }
