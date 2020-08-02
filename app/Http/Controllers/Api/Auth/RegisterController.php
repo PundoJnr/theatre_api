@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -21,7 +21,7 @@ class RegisterController extends Controller
      * @param  mixed  $user
      * @return mixed
      */
-    protected function registered(Request $request, $user)
+    protected function registered(Request $request, User $user)
     {
         $token =  $user->createToken('theatre')->accessToken;
 
