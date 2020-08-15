@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link rel="icon" type="image/png" href="images/icons/logo.ico" />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -30,7 +30,7 @@
             style="background-image: url('images/bg01.jpeg');">
             <div class="wsize2 flex-w flex-c-m cd100 js-tilt">
                 <div class="flex-col-c-m size6 bor2 m-l-10 m-r-10 m-t-15">
-                    <span class="l2-txt1 p-b-9 days">14</span>
+                    <span class="l2-txt1 p-b-9 days">35</span>
                     <span class="s2-txt4">Days</span>
                 </div>
 
@@ -117,13 +117,13 @@
         $('.cd100').countdown100({
 			/*Set Endtime here*/
 			/*Endtime must be > current time*/
-			endtimeYear: 0,
-			endtimeMonth: 0,
-			endtimeDate: 35,
+			endtimeYear: 2020,
+			endtimeMonth: 09,
+			endtimeDate: 10,
 			endtimeHours: 18,
 			endtimeMinutes: 0,
 			endtimeSeconds: 0,
-			timeZone: ""
+			timeZone: "Nairobi/Kenya"
 			// ex:  timeZone: "America/New_York"
 			//go to " http://momentjs.com/timezone/ " to get timezone
 		});
