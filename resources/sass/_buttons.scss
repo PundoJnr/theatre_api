@@ -1,0 +1,12 @@
+.btn-theatre {
+    background: $brown;
+    color: $white;
+
+
+    &:focus,
+    &.focus {
+        outline: 0;
+        box-shadow: $btn-focus-box-shadow;
+    }
+
+}
