@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
 
 class UploadsController extends Controller
 {
@@ -42,7 +44,42 @@ class UploadsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/FirebaseKey.json');
+        $firebase = (new Factory)
+        ->withServiceAccount($serviceAccount)
+        ->withDatabaseUri('https://theatreke.firebaseio.com/')
+        ->create();
+
+        $database = $firebase->getDatabase();
+
+        $ref = $database->getReference('Videos');
+
+        $key = $ref->push()->getKey();
+        
+        
+
+        $ref = $ref->getChild($key)->set([
+            'category'=>$request->category,
+            'type'=>$request->type,
+            'title'=>$request->title,
+            'location'=>$request->location,
+            'language'=>$request->language,
+            'synopsis'=>$request->synopsis,
+            'producer'=>$request->prodcer,
+            'playwright'=>$request->playwright,
+            'stage_manager  '=>$request->stage_manager,
+            'crew'=>$request->crew,
+            'cast'=>$request->cast,
+            'tags'=>$request->tags,
+            'price'=>$request->price,
+            'created_at'=>$request->created_at,
+            'uploaded_by'=>$request->uploaded_by,
+            'media_url'=>$request->media_url       
+
+        ]);
+
+        return back()->with('message', 'Successfully Uploaded');
+
     }
 
     /**

@@ -13,7 +13,7 @@
                     <a href="#" class="mr-0">
                         <img src="{{ asset ('images/logo/apple-store.png') }}" alt="..." height="100px">
                     </a>
-                    <a href="#">
+                    <a href="https://play.google.com/store/apps/details?id=ke.co.theatre">
                         <img src="{{ asset ('images/logo/google-play.png') }}" alt="..." height="100px">
                     </a>
                 </div>
